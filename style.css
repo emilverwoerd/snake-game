@@ -1,0 +1,134 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #0a0a0f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Courier New', monospace;
+    overflow: hidden;
+}
+
+#game-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#score-display {
+    font-size: 1.5rem;
+    color: #0ff;
+    text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 40px #0088ff;
+    margin-bottom: 16px;
+    letter-spacing: 4px;
+    font-weight: bold;
+}
+
+#gameCanvas {
+    border: 2px solid #0ff;
+    box-shadow: 0 0 15px #0ff, 0 0 30px #0088ff, inset 0 0 15px rgba(0, 255, 255, 0.1);
+    border-radius: 4px;
+    background: #0a0a0f;
+}
+
+#game-over,
+#start-screen {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 10;
+    padding: 40px;
+    background: rgba(10, 10, 15, 0.95);
+    border: 2px solid #0ff;
+    border-radius: 12px;
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+    animation: fadeIn 0.5s ease;
+}
+
+#game-over h1,
+#start-screen h1 {
+    font-size: 2.5rem;
+    color: #ff0055;
+    text-shadow: 0 0 10px #ff0055, 0 0 20px #ff0055, 0 0 40px #ff0055;
+    margin-bottom: 16px;
+}
+
+#start-screen h1 {
+    color: #0ff;
+    text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 40px #0088ff;
+}
+
+#game-over p,
+#start-screen p {
+    font-size: 1.2rem;
+    color: #aaa;
+    margin-bottom: 24px;
+}
+
+#restart-btn,
+#start-btn {
+    font-family: 'Courier New', monospace;
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: 12px 32px;
+    background: transparent;
+    color: #0ff;
+    border: 2px solid #0ff;
+    border-radius: 6px;
+    cursor: pointer;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+#restart-btn:hover,
+#start-btn:hover {
+    background: rgba(0, 255, 255, 0.15);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+    transform: scale(1.05);
+}
+
+.hidden {
+    display: none !important;
+}
+
+#status-effects {
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.status-effect {
+    font-size: 0.9rem;
+    color: #fff;
+    text-shadow: 0 0 8px currentColor;
+    padding: 4px 10px;
+    background: rgba(10, 10, 15, 0.8);
+    border: 1px solid currentColor;
+    border-radius: 4px;
+    animation: statusPulse 1s ease infinite;
+    white-space: nowrap;
+}
+
+@keyframes statusPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translate(-50%, -50%) scale(0.9); }
+    to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
